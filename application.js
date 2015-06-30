@@ -1,19 +1,33 @@
-//alert("hello World")
+//Define Globals
   var toDoList = [];
+  
+  function changeDisplay(){
+   var list = document.getElementById("todolist");
+   // Only place we actually change the screen
+   list.innerHTML = "";
+   for(var i=0; i<toDoList.length; i++) {
+   list.innerHTML += '<div class="item">' + toDoList[i] + '</div>';
+   }
+  }
   
 function addToDo(){
 
-  var list;
+
   var tmpItem;
+  var newToDo = document.getElementById("todonew");
   
-    list = document.getElementById("todolist");
-    tmpItem = document.getElementById("todonew").value;
-    list.innerHTML = "";
+
+  tmpItem = newToDo.value;
+
     
-    toDoList.push(tmpItem)
-   for(var i=0; i<toDoList.length; i++) {
-     list.innerHTML += '<div class="item">' + toDoList[i] + '</div>';
-   }
+  toDoList.push(tmpItem);
+  // Call our display function
+  changeDisplay();
+  
+  newToDo.value = "";
+  newToDo.select();
+  
+  
 }
 
 
